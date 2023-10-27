@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+<title>Form validation</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<form onsubmit="return Vali(){
+let nameInput = document.getElementById("name").value; let emailInput = document.getElementById("email").value; let trimmedName = nameInput.trim();
+if (trimmedName === '') {
+alert("Can't be empty");
+return false;
+}
+if (trimmedName.length < 3) {
+alert("Insufficient length");
+return false;
+}
+let trimmedEmail = emailInput.trim();
+if (trimmedEmail === '') {
+alert("can't be empty");
+return false;
+}
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0- 9.-]+\.[a-zA-Z]{2,}$/;
+if (!emailRegex.test(emailInput)) { 
+    alert("Email must include @ and contain a . after the
+@");
+    return false;
+}
+const isConfirmed = confirm(`Are you sure you want to
+submit the form,${trimmedName}?`);
+if (!isConfirmed) {
+return; } 
+const responseMessage = `Hello, ${trimmedName}! Your form has been submitted successfully.`,alert(responseMessage); return true;
+}ali()"> 
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email"><br><br>
+        <label for="message">Message:</label>
+        <input type="text" id="message"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+<script src="script.js"></script>
+</body>
